@@ -1,0 +1,174 @@
+﻿@model List<Coffee>
+@*@{
+    string? coffeeName;
+    int coffeePrice;
+    foreach (var item in Model)
+    {
+         coffeeName = item.CoffeeName;
+         coffeePrice = item.Price;
+
+    }
+}*@
+
+@{
+    int i = 0;
+    var coffeeNames = new List<string>();
+    var coffeePrices = new List<int>();
+
+    foreach (var item in Model)
+    {
+        coffeeNames.Add(item.CoffeeName);
+        coffeePrices.Add(item.Price);
+        @i += 1;
+
+    }
+}
+
+
+
+ <!DOCTYPE html>
+<html lang="tr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Boostrap Link -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <!-- Boostrap İcon Link -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+          rel="stylesheet">
+    <!-- MDB -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.css" rel="stylesheet" />
+    <!-- Css Link -->
+    <link rel="stylesheet" href="~/css/Style.css">
+    <!-- Sayfa Başlığı -->
+    <title>Kahve Sipariş Projesi</title>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand" asp-action="KahveMenu" asp-controller="AnaMenu">C# Cafe</a>
+            <!-- Nav Toogler -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <!-- Nav Link -->
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" asp-action="KahveMenu" asp-controller="AnaMenu">Kahveler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Çaylar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Soğuk İçecekler</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Yiyecekler</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <!-- Navbar End -->
+
+    <div class="menu">
+        <div class="container mt-3">
+    
+            <div class="row">
+                <!-- Menu Görsel -->
+                <div class="col-4 py-2">
+                    <img src="/images/kahve.jpg" width="100px" height="100px" alt="">
+                </div>
+                <!-- Menu İsim-Fiyat -->
+                <div class="col-4 py-1">
+  
+                    <span>@coffeeNames[0]</span>
+
+                    <br>
+                    <span>@coffeePrices[0]</span>
+                    
+                </div>
+   
+
+                <!-- Menu Buton -->
+                <div class="col-4 py-2 mt-3">
+                    <button onclick="toggleMenu()" type="button" class="menu-btn btn">EKLE<i class="bi bi-plus"></i></button>
+                </div>
+             
+            </div>
+        </div>
+        <hr>
+        <div class="container mt-3">
+            <div class="row">
+                <!-- Menu Görsel -->
+                <div class="col-4 py-2">
+                    <img src="/images/latte.jpg" width="100px" height="100px" alt="">
+                </div>
+                <!-- Menu İsim-Fiyat -->
+                <div class="col-4 py-1">
+                  
+                    <span>@coffeeNames[1]</span>
+
+                    <br>
+                    <span>@coffeePrices[1]</span>
+                    
+                </div>
+
+                <!-- Menu Buton -->
+                <div class="col-4 py-2 mt-3">
+                    <button onclick="toggleMenu()" type="button" class="menu-btn btn">EKLE<i class="bi bi-plus"></i></button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+    <!-- Ekle Butonuna basılınca çıkan panel -->
+    <div class="menu-container" id="menuContainer">
+        <input type="text">
+    </div>
+    <!-- Panel End -->
+    <!-- Footer -->
+    <div class="container">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-2 my-4 border-top">
+            <div class="col-md-6 d-flex align-items-center">
+                <a href="/" class="mb-3 me-2 mb-md-0 text-body-secondary text-decoration-none lh-1">
+                </a>
+                <span class="mb-3 mb-md-0 text-body-secondary">Cafe İsmi</span>
+            </div>
+
+            <ul class="nav col-md-6 justify-content-end list-unstyled d-flex">
+                <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-facebook"></i></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-instagram"></i></a></li>
+                <li class="ms-3"><a class="text-body-secondary" href="#"><i class="bi bi-twitter"></i></a></li>
+            </ul>
+        </footer>
+    </div>
+    <!-- Footer End -->
+    <!-- Boostrap Link -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
+            crossorigin="anonymous"></script>
+    <!-- MDB -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mdb-ui-kit/6.3.1/mdb.min.js"></script>
+    <script src="/js/App.js"></script>
+</body>
+
+</html>

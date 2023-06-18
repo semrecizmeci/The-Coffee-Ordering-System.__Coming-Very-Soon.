@@ -1,0 +1,57 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Playfair Display', serif;
+}
+
+body, html {
+    background-color: #E9E1D1;
+}
+
+.navbar {
+    background-color: rgb(105, 91, 63);
+}
+
+.category-link {
+    position: absolute;
+    top: 50%;
+    left: 42%;
+    transform: translate(-50%, -50%);
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    text-decoration: none;
+}
+/* anasayfa toogle */
+.nav-item .nav-link {
+    color: #fff;
+}
+/* Button */
+.menu-btn {
+    background-color: #97805c;
+    color: #fff;
+}
+
+/* ekle paneli */
+.menu-container {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ccc;
+    padding: 10px;
+    transform: translateY(100%);
+    transition: transform 0.3s ease-in-out;
+}
+
+    .menu-container.open {
+        transform: translateY(0);
+    }
+
+.menu {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
